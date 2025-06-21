@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="="en">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -25,27 +25,12 @@
       height: 100%;
     }
 
-    .slide {
+    .carousel-images img {
       width: 100vw;
-      flex-shrink: 0;
       height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      flex-direction: column;
-    }
-
-    .slide img {
-      max-height: 100%;
       object-fit: contain;
-      box-sizing: border-box;
-    }
-
-    .slide-caption {
-      text-align: center;
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
+      background: black;
+      flex-shrink: 0;
     }
 
     .arrow {
@@ -69,6 +54,12 @@
       right: 10px;
     }
 
+    .caption {
+      text-align: center;
+      padding: 1rem;
+      background: #222;
+    }
+
     .dots {
       text-align: center;
       margin: 1rem 0;
@@ -87,12 +78,6 @@
     .dot.active {
       background-color: white;
     }
-
-    .caption {
-      text-align: center;
-      padding: 1rem;
-      background: #222;
-    }
   </style>
 </head>
 <body>
@@ -101,33 +86,32 @@
     <button class="arrow left" onclick="prevSlide()">&#8592;</button>
     <button class="arrow right" onclick="nextSlide()">&#8594;</button>
     <div class="carousel-images" id="carouselImages">
-      <div class="slide"><img src="01 - Leona El'Jonson.jpeg" alt="Leona El' Jonson" /></div>
-      <div class="slide"><img src="03 - Fulgrimia A.jpg" alt="Fulgrimia" /></div>
-      <div class="slide"><img src="04 - Petra.jpeg" alt="Petra" /></div>
-      <div class="slide"><img src="05 - Alakhai Khan.jpeg" alt="Alakhai Khan" /></div>
-      <div class="slide"><img src="06 - Freya Russ.jpeg" alt="Freya Russ" /></div>
-      <div class="slide"><img src="07 - Regalia Dorn.jpeg" alt="Regalia Dorn" /></div>
-      <div class="slide"><img src="08 - Kassandra Curze.jpeg" alt="Kassandra Curze" /></div>
-      <div class="slide"><img src="09 - Sanguinia A.jpg" alt="Sanguinia" /></div>
-      <div class="slide"><img src="10 - Ferra Manus.jpeg" alt="Ferra Manus" /></div>
-      <div class="slide"><img src="12 - Atalanta A.jpg" alt="Atalanta" /></div>
-      <div class="slide"><img src="13 - Juno Guilliman A.jpeg" alt="Juno Guilliman" /></div>
-      <div class="slide"><img src="14 - Morrigan B.png" alt="Morrigan" /></div>
-      <div class="slide"><img src="15 - Magnolia B.jpg" alt="Magnolia" /></div>
-      <div class="slide"><img src="16 - Hathor Lupercal.jpeg" alt="Hathor Lupercal" /></div>
-      <div class="slide"><img src="17 - Aurelia B.jpg" alt="Aurelia" /></div>
-      <div class="slide"><img src="18 - Hestia.jpeg" alt="Hestia" /></div>
-      <div class="slide"><img src="19 - Corvess Corax.jpeg" alt="Corvess Corax" /></div>
-      <div class="slide"><img src="20 - Alpharia Omega C.jpeg" alt="Alpharia Omega" /></div>
+      <img loading="lazy" src="01 - Leona El'Jonson.jpeg" alt="The Lion" />
+      <img loading="lazy" src="03 - Fulgrimia A.jpg" alt="Phoenician" />
+      <img loading="lazy" src="04 - Petra.jpeg" alt="Hammer of Olympia" />
+      <img loading="lazy" src="05 - Alakhai Khan.jpeg" alt="The Warhawk" />
+      <img loading="lazy" src="06 - Freya Russ.jpeg" alt="The Great Wolf Queen" />
+      <img loading="lazy" src="07 - Regalia Dorn.jpeg" alt="The Vigilant" />
+      <img loading="lazy" src="08 - Kassandra Curze.jpeg" alt="The Night Haunter" />
+      <img loading="lazy" src="09 - Sanguinia A.jpg" alt="The Crimson Angel" />
+      <img loading="lazy" src="10 - Ferra Manus.jpeg" alt="The Great Iron Mother" />
+      <img loading="lazy" src="12 - Atalanta A.jpg" alt="Queen of the Red Sands" />
+      <img loading="lazy" src="13 - Juno Guilliman A.jpeg" alt="Mistress of Ultramar" />
+      <img loading="lazy" src="14 - Morrigan B.png" alt="The Pale Death" />
+      <img loading="lazy" src="15 - Magnolia B.jpg" alt="The Cyclops of Prospero" />
+      <img loading="lazy" src="16 - Hathor Lupercal.jpeg" alt="The Warmaster" />
+      <img loading="lazy" src="17 - Aurelia B.jpg" alt="The Golden Urizen" />
+      <img loading="lazy" src="18 - Hestia.jpeg" alt="The Drake" />
+      <img loading="lazy" src="19 - Corvess Corax.jpeg" alt="The Shadowed Liberator" />
+      <img loading="lazy" src="20 - Alpharia Omega C.jpeg" alt="The Threefold Serpent" />
     </div>
   </div>
 
-  <div class="slide-caption" id="slideText"></div>
   <div class="dots" id="dots"></div>
 
   <div class="caption">
     <h2>Welcome to Primarch GFs Hub</h2>
-    <p>Use arrows or dots to browse all 18 Primarch bot covers! Art used for the bots and this website were done by Sfcompany1e and CNMBWJX. Check out their art on their Twitter/X and Patreon accounts.</p>
+    <p>Use arrows or dots to browse all 18 Primarch bot covers! Art used for the bots and this website were done by Sfcompany1e and CNMBWJX. Check out their art on their twitter/x and patreon accounts.</p>
   </div>
 
   <script>
@@ -135,29 +119,6 @@
     const total = images.children.length;
     let currentIndex = 0;
     let autoplayInterval;
-
-    images.style.width = `${total * 100}vw`;
-
-    const captions = [
-      "Leona El' Jonson, The Lion",
-      "Fulgrimia, Phoenician",
-      "Petra, Hammer of Olympia",
-      "Alakhai Khan, The Warhawk",
-      "Freya Russ, The Great Wolf Queen",
-      "Regalia Dorn, The Vigilant",
-      "Kassandra Curze, The Night Haunter",
-      "Sanguinia, The Crimson Angel",
-      "Ferra Manus, The Great Iron Mother",
-      "Atalanta, Queen of the Red Sands",
-      "Juno Guilliman, Mistress of Ultramar",
-      "Morrigan, The Pale Death",
-      "Magnolia, The Cyclops of Prospero",
-      "Hathor Lupercal, The Warmaster",
-      "Aurelia, The Golden Urizen",
-      "Hestia, The Drake",
-      "Corvess Corax, The Shadowed Liberator",
-      "Alpharia Omega, The Threefold Serpent"
-    ];
 
     const dotsContainer = document.getElementById("dots");
 
@@ -172,7 +133,6 @@
 
     function updateCarousel() {
       images.style.transform = `translateX(-${currentIndex * 100}vw)`;
-      document.getElementById("slideText").textContent = captions[currentIndex];
       for (let i = 0; i < dots.length; i++) {
         dots[i].classList.toggle("active", i === currentIndex);
       }
@@ -209,4 +169,3 @@
 
 </body>
 </html>
-
