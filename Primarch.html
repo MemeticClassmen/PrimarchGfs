@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Primarch GFs Carousel</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #111;
+      color: white;
+    }
+
+    .carousel {
+      position: relative;
+      max-width: 100%;
+      height: 80vh;
+      overflow: hidden;
+    }
+
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      height: 100%;
+    }
+
+    .slide {
+      width: 100vw;
+      flex-shrink: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      flex-direction: column;
+    }
+
+    .slide img {
+      max-height: 100%;
+      object-fit: contain;
+      box-sizing: border-box;
+    }
+
+    .slide-caption {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .arrow.left {
+      left: 10px;
+    }
+
+    .arrow.right {
+      right: 10px;
+    }
+
+    .dots {
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 0 5px;
+      background-color: #555;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background-color: white;
+    }
+
+    .caption {
+      text-align: center;
+      padding: 1rem;
+      background: #222;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carousel">
+    <button class="arrow left" onclick="prevSlide()">&#8592;</button>
+    <button class="arrow right" onclick="nextSlide()">&#8594;</button>
+    <div class="carousel-images" id="carouselImages">
+      <div class="slide"><img src="01 - Leona El'Jonson.jpeg" alt="Leona El' Jonson" /></div>
+      <div class="slide"><img src="03 - Fulgrimia A.jpg" alt="Fulgrimia" /></div>
+      <div class="slide"><img src="04 - Petra.jpeg" alt="Petra" /></div>
+      <div class="slide"><img src="05 - Alakhai Khan.jpeg" alt="Alakhai Khan" /></div>
+      <div class="slide"><img src="06 - Freya Russ.jpeg" alt="Freya Russ" /></div>
+      <div class="slide"><img src="07 - Regalia Dorn.jpeg" alt="Regalia Dorn" /></div>
+      <div class="slide"><img src="08 - Kassandra Curze.jpeg" alt="Kassandra Curze" /></div>
+      <div class="slide"><img src="09 - Sanguinia A.jpg" alt="Sanguinia" /></div>
+      <div class="slide"><img src="10 - Ferra Manus.jpeg" alt="Ferra Manus" /></div>
+      <div class="slide"><img src="12 - Atalanta A.jpg" alt="Atalanta" /></div>
+      <div class="slide"><img src="13 - Juno Guilliman A.jpeg" alt="Juno Guilliman" /></div>
+      <div class="slide"><img src="14 - Morrigan B.png" alt="Morrigan" /></div>
+      <div class="slide"><img src="15 - Magnolia B.jpg" alt="Magnolia" /></div>
+      <div class="slide"><img src="16 - Hathor Lupercal.jpeg" alt="Hathor Lupercal" /></div>
+      <div class="slide"><img src="17 - Aurelia B.jpg" alt="Aurelia" /></div>
+      <div class="slide"><img src="18 - Hestia.jpeg" alt="Hestia" /></div>
+      <div class="slide"><img src="19 - Corvess Corax.jpeg" alt="Corvess Corax" /></div>
+      <div class="slide"><img src="20 - Alpharia Omega C.jpeg" alt="Alpharia Omega" /></div>
+    </div>
+  </div>
+
+  <div class="slide-caption" id="slideText"></div>
+  <div class="dots" id="dots"></div>
+
+  <div class="caption">
+    <h2>Welcome to Primarch GFs Hub</h2>
+    <p>Use arrows or dots to browse all 18 Primarch bot covers! Art used for the bots and this website were done by Sfcompany1e and CNMBWJX. Check out their art on their Twitter/X and Patreon accounts.</p>
+  </div>
+
+  <script>
+    const images = document.getElementById("carouselImages");
+    const total = images.children.length;
+    let currentIndex = 0;
+    let autoplayInterval;
+
+    images.style.width = `${total * 100}vw`;
+
+    const captions = [
+      "Leona El' Jonson, The Lion",
+      "Fulgrimia, Phoenician",
+      "Petra, Hammer of Olympia",
+      "Alakhai Khan, The Warhawk",
+      "Freya Russ, The Great Wolf Queen",
+      "Regalia Dorn, The Vigilant",
+      "Kassandra Curze, The Night Haunter",
+      "Sanguinia, The Crimson Angel",
+      "Ferra Manus, The Great Iron Mother",
+      "Atalanta, Queen of the Red Sands",
+      "Juno Guilliman, Mistress of Ultramar",
+      "Morrigan, The Pale Death",
+      "Magnolia, The Cyclops of Prospero",
+      "Hathor Lupercal, The Warmaster",
+      "Aurelia, The Golden Urizen",
+      "Hestia, The Drake",
+      "Corvess Corax, The Shadowed Liberator",
+      "Alpharia Omega, The Threefold Serpent"
+    ];
+
+    const dotsContainer = document.getElementById("dots");
+
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement("span");
+      dot.classList.add("dot");
+      dot.onclick = () => goToSlide(i);
+      dotsContainer.appendChild(dot);
+    }
+
+    const dots = dotsContainer.children;
+
+    function updateCarousel() {
+      images.style.transform = `translateX(-${currentIndex * 100}vw)`;
+      document.getElementById("slideText").textContent = captions[currentIndex];
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.toggle("active", i === currentIndex);
+      }
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % total;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + total) % total;
+      updateCarousel();
+    }
+
+    function goToSlide(index) {
+      currentIndex = index;
+      updateCarousel();
+      restartAutoplay();
+    }
+
+    function startAutoplay() {
+      autoplayInterval = setInterval(nextSlide, 10000);
+    }
+
+    function restartAutoplay() {
+      clearInterval(autoplayInterval);
+      startAutoplay();
+    }
+
+    updateCarousel();
+    startAutoplay();
+  </script>
+
+</body>
+</html>
+
