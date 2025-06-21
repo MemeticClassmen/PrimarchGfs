@@ -13,45 +13,33 @@
     }
 
     .carousel {
-      position: relative;
-      max-width: 100%;
-      height: 80vh;
-      overflow: hidden;
-    }
-
-    .carousel-images {
       display: flex;
-      transition: transform 0.5s ease-in-out;
-      height: 100%;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      width: 100vw;
+      height: 90vh;
     }
 
-    .carousel-images img {
+    .carousel figure {
+      scroll-snap-align: start;
+      text-align: center;
+      color: white;
+      margin: 0;
       width: 100vw;
       height: 100%;
+    }
+
+    .carousel figure img {
+      width: 100vw;
+      height: 90%;
       object-fit: contain;
       background: black;
-      flex-shrink: 0;
     }
 
-    .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      border: none;
-      color: white;
-      font-size: 2rem;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      z-index: 1;
-    }
-
-    .arrow.left {
-      left: 10px;
-    }
-
-    .arrow.right {
-      right: 10px;
+    .carousel figure figcaption {
+      font-size: 1rem;
+      padding: 0.5rem;
+      background: rgba(0,0,0,0.6);
     }
 
     .caption {
@@ -59,113 +47,32 @@
       padding: 1rem;
       background: #222;
     }
-
-    .dots {
-      text-align: center;
-      margin: 1rem 0;
-    }
-
-    .dot {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      margin: 0 5px;
-      background-color: #555;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-
-    .dot.active {
-      background-color: white;
-    }
   </style>
 </head>
 <body>
-
   <div class="carousel">
-    <button class="arrow left" onclick="prevSlide()">&#8592;</button>
-    <button class="arrow right" onclick="nextSlide()">&#8594;</button>
-    <div class="carousel-images" id="carouselImages">
-      <img loading="lazy" src="01 - Leona El'Jonson.jpeg" alt="The Lion" />
-      <img loading="lazy" src="03 - Fulgrimia A.jpg" alt="Phoenician" />
-      <img loading="lazy" src="04 - Petra.jpeg" alt="Hammer of Olympia" />
-      <img loading="lazy" src="05 - Alakhai Khan.jpeg" alt="The Warhawk" />
-      <img loading="lazy" src="06 - Freya Russ.jpeg" alt="The Great Wolf Queen" />
-      <img loading="lazy" src="07 - Regalia Dorn.jpeg" alt="The Vigilant" />
-      <img loading="lazy" src="08 - Kassandra Curze.jpeg" alt="The Night Haunter" />
-      <img loading="lazy" src="09 - Sanguinia A.jpg" alt="The Crimson Angel" />
-      <img loading="lazy" src="10 - Ferra Manus.jpeg" alt="The Great Iron Mother" />
-      <img loading="lazy" src="12 - Atalanta A.jpg" alt="Queen of the Red Sands" />
-      <img loading="lazy" src="13 - Juno Guilliman A.jpeg" alt="Mistress of Ultramar" />
-      <img loading="lazy" src="14 - Morrigan B.png" alt="The Pale Death" />
-      <img loading="lazy" src="15 - Magnolia B.jpg" alt="The Cyclops of Prospero" />
-      <img loading="lazy" src="16 - Hathor Lupercal.jpeg" alt="The Warmaster" />
-      <img loading="lazy" src="17 - Aurelia B.jpg" alt="The Golden Urizen" />
-      <img loading="lazy" src="18 - Hestia.jpeg" alt="The Drake" />
-      <img loading="lazy" src="19 - Corvess Corax.jpeg" alt="The Shadowed Liberator" />
-      <img loading="lazy" src="20 - Alpharia Omega C.jpeg" alt="The Threefold Serpent" />
-    </div>
+    <figure><img loading="lazy" src="01 - Leona El'Jonson.jpeg" alt="The Lion"><figcaption>The Lion</figcaption></figure>
+    <figure><img loading="lazy" src="03 - Fulgrimia A.jpg" alt="Phoenician"><figcaption>Phoenician</figcaption></figure>
+    <figure><img loading="lazy" src="04 - Petra.jpeg" alt="Hammer of Olympia"><figcaption>Hammer of Olympia</figcaption></figure>
+    <figure><img loading="lazy" src="05 - Alakhai Khan.jpeg" alt="The Warhawk"><figcaption>The Warhawk</figcaption></figure>
+    <figure><img loading="lazy" src="06 - Freya Russ.jpeg" alt="The Great Wolf Queen"><figcaption>The Great Wolf Queen</figcaption></figure>
+    <figure><img loading="lazy" src="07 - Regalia Dorn.jpeg" alt="The Vigilant"><figcaption>The Vigilant</figcaption></figure>
+    <figure><img loading="lazy" src="08 - Kassandra Curze.jpeg" alt="The Night Haunter"><figcaption>The Night Haunter</figcaption></figure>
+    <figure><img loading="lazy" src="09 - Sanguinia A.jpg" alt="The Crimson Angel"><figcaption>The Crimson Angel</figcaption></figure>
+    <figure><img loading="lazy" src="10 - Ferra Manus.jpeg" alt="The Great Iron Mother"><figcaption>The Great Iron Mother</figcaption></figure>
+    <figure><img loading="lazy" src="12 - Atalanta A.jpg" alt="Queen of the Red Sands"><figcaption>Queen of the Red Sands</figcaption></figure>
+    <figure><img loading="lazy" src="13 - Juno Guilliman A.jpeg" alt="Mistress of Ultramar"><figcaption>Mistress of Ultramar</figcaption></figure>
+    <figure><img loading="lazy" src="14 - Morrigan B.png" alt="The Pale Death"><figcaption>The Pale Death</figcaption></figure>
+    <figure><img loading="lazy" src="15 - Magnolia B.jpg" alt="The Cyclops of Prospero"><figcaption>The Cyclops of Prospero</figcaption></figure>
+    <figure><img loading="lazy" src="16 - Hathor Lupercal.jpeg" alt="The Warmaster"><figcaption>The Warmaster</figcaption></figure>
+    <figure><img loading="lazy" src="17 - Aurelia B.jpg" alt="The Golden Urizen"><figcaption>The Golden Urizen</figcaption></figure>
+    <figure><img loading="lazy" src="18 - Hestia.jpeg" alt="The Drake"><figcaption>The Drake</figcaption></figure>
+    <figure><img loading="lazy" src="19 - Corvess Corax.jpeg" alt="The Shadowed Liberator"><figcaption>The Shadowed Liberator</figcaption></figure>
+    <figure><img loading="lazy" src="20 - Alpharia Omega C.jpeg" alt="The Threefold Serpent"><figcaption>The Threefold Serpent</figcaption></figure>
   </div>
-
-  <div class="dots" id="dots"></div>
-
   <div class="caption">
-    <h2>Welcome to Primarch GFs Hub</h2>
-    <p>Use arrows or dots to browse all 18 Primarch bot covers! Art used for the bots and this website were done by Sfcompany1e and CNMBWJX. Check out their art on their twitter/x and patreon accounts.</p>
+    <h2>Primarch GFs Viewer</h2>
+    <p>Swipe or scroll to see all 18 Primarch covers. Hosted with love.</p>
   </div>
-
-  <script>
-    const images = document.getElementById("carouselImages");
-    const total = images.children.length;
-    let currentIndex = 0;
-    let autoplayInterval;
-
-    const dotsContainer = document.getElementById("dots");
-
-    for (let i = 0; i < total; i++) {
-      const dot = document.createElement("span");
-      dot.classList.add("dot");
-      dot.onclick = () => goToSlide(i);
-      dotsContainer.appendChild(dot);
-    }
-
-    const dots = dotsContainer.children;
-
-    function updateCarousel() {
-      images.style.transform = `translateX(-${currentIndex * 100}vw)`;
-      for (let i = 0; i < dots.length; i++) {
-        dots[i].classList.toggle("active", i === currentIndex);
-      }
-    }
-
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % total;
-      updateCarousel();
-    }
-
-    function prevSlide() {
-      currentIndex = (currentIndex - 1 + total) % total;
-      updateCarousel();
-    }
-
-    function goToSlide(index) {
-      currentIndex = index;
-      updateCarousel();
-      restartAutoplay();
-    }
-
-    function startAutoplay() {
-      autoplayInterval = setInterval(nextSlide, 10000);
-    }
-
-    function restartAutoplay() {
-      clearInterval(autoplayInterval);
-      startAutoplay();
-    }
-
-    updateCarousel();
-    startAutoplay();
-  </script>
-
 </body>
 </html>
