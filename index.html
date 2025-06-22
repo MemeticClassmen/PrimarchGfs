@@ -56,7 +56,7 @@
       font-size: 2rem;
       padding: 0.5rem 1rem;
       cursor: pointer;
-      z-index: 1;
+      z-index: 10;
     }
 
     .arrow.left {
@@ -65,6 +65,19 @@
 
     .arrow.right {
       right: 10px;
+    }
+
+    #pauseBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      z-index: 20;
     }
 
     .dots {
@@ -100,19 +113,6 @@
     .caption a:hover {
       text-decoration: underline;
     }
-
-    #pauseBtn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: rgba(0, 0, 0, 0.6);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      cursor: pointer;
-      z-index: 2;
-    }
   </style>
 </head>
 <body>
@@ -120,36 +120,38 @@
   <div class="carousel">
     <button class="arrow left" onclick="prevSlide()">&#8592;</button>
     <button class="arrow right" onclick="nextSlide()">&#8594;</button>
+
     <div class="carousel-images" id="carouselImages">
-      <figure><img loading="lazy" src="01 - Leona El'Jonson.jpeg" alt="The Lion"><figcaption>Leona El'Jonson, The Lion</figcaption></figure>
-      <figure><img loading="lazy" src="03 - Fulgrimia A.jpg" alt="Phoenician"><figcaption>Fulgrimia, Phoenician</figcaption></figure>
-      <figure><img loading="lazy" src="04 - Petra.jpeg" alt="Hammer of Olympia"><figcaption>Petra, Hammer of Olympia</figcaption></figure>
-      <figure><img loading="lazy" src="05 - Alakhai Khan.jpeg" alt="The Warhawk"><figcaption>Alakhai Khan, The Warhawk</figcaption></figure>
-      <figure><img loading="lazy" src="06 - Freya Russ.jpeg" alt="The Great Wolf Queen"><figcaption>Freya Russ, The Great Wolf Queen</figcaption></figure>
-      <figure><img loading="lazy" src="07 - Regalia Dorn.jpeg" alt="The Vigilant"><figcaption>Regalia Dorn, The Vigilant</figcaption></figure>
+      <figure><img loading="lazy" src="01 - Leona El'Jonson.jpeg" alt="Leona El'Jonson"><figcaption>Leona El'Jonson, The Lion</figcaption></figure>
+      <figure><img loading="lazy" src="03 - Fulgrimia A.jpg" alt="Fulgrimia"><figcaption>Fulgrimia, Phoenician</figcaption></figure>
+      <figure><img loading="lazy" src="04 - Petra.jpeg" alt="Petra"><figcaption>Petra, Hammer of Olympia</figcaption></figure>
+      <figure><img loading="lazy" src="05 - Alakhai Khan.jpeg" alt="Alakhai Khan"><figcaption>Alakhai Khan, The Warhawk</figcaption></figure>
+      <figure><img loading="lazy" src="06 - Freya Russ.jpeg" alt="Freya Russ"><figcaption>Freya Russ, The Great Wolf Queen</figcaption></figure>
+      <figure><img loading="lazy" src="07 - Regalia Dorn.jpeg" alt="Regalia Dorn"><figcaption>Regalia Dorn, The Vigilant</figcaption></figure>
       <figure>
         <a href="https://flowgpt.com/p/YEhuFYnJupSJBA7am29AM" target="_blank">
-          <img loading="lazy" src="08 - Kassandra Curze.jpeg" alt="The Night Haunter">
+          <img loading="lazy" src="08 - Kassandra Curze.jpeg" alt="Kassandra Curze">
         </a>
         <figcaption>Kassandra Curze, The Night Haunter</figcaption>
       </figure>
       <figure>
         <a href="https://flowgpt.com/p/primarch-dating-sim-sanguinia-the-crimson-angel-e2ea9c08" target="_blank">
-          <img loading="lazy" src="09 - Sanguinia A.jpg" alt="The Crimson Angel">
+          <img loading="lazy" src="09 - Sanguinia A.jpg" alt="Sanguinia">
         </a>
         <figcaption>Sanguinia, The Crimson Angel</figcaption>
       </figure>
-      <figure><img loading="lazy" src="10 - Ferra Manus.jpeg" alt="The Great Iron Mother"><figcaption>Ferra Manus, The Great Iron Mother</figcaption></figure>
-      <figure><img loading="lazy" src="12 - Atalanta A.jpg" alt="Queen of the Red Sands"><figcaption>Atalanta, Queen of the Red Sands</figcaption></figure>
-      <figure><img loading="lazy" src="13 - Juno Guilliman A.jpeg" alt="Mistress of Ultramar"><figcaption>Juno Guilliman, Mistress of Ultramar</figcaption></figure>
-      <figure><img loading="lazy" src="14 - Morrigan B.png" alt="The Pale Death"><figcaption>Morrigan, The Pale Death</figcaption></figure>
-      <figure><img loading="lazy" src="15 - Magnolia B.jpg" alt="The Cyclops of Prospero"><figcaption>Magnolia, The Cyclops of Prospero</figcaption></figure>
-      <figure><img loading="lazy" src="16 - Hathor Lupercal.jpeg" alt="The Warmaster"><figcaption>Hathor Lupercal, The Warmaster</figcaption></figure>
-      <figure><img loading="lazy" src="17 - Aurelia B.jpg" alt="The Golden Urizen"><figcaption>Aurelia, The Golden Urizen</figcaption></figure>
-      <figure><img loading="lazy" src="18 - Hestia.jpeg" alt="The Drake"><figcaption>Hestia, The Drake</figcaption></figure>
-      <figure><img loading="lazy" src="19 - Corvess Corax.jpeg" alt="The Shadowed Liberator"><figcaption>Corvess Corax, The Shadowed Liberator</figcaption></figure>
-      <figure><img loading="lazy" src="20 - Alpharia Omega C.jpeg" alt="The Threefold Serpent"><figcaption>Alpharia Omega, The Threefold Serpent</figcaption></figure>
+      <figure><img loading="lazy" src="10 - Ferra Manus.jpeg" alt="Ferra Manus"><figcaption>Ferra Manus, The Great Iron Mother</figcaption></figure>
+      <figure><img loading="lazy" src="12 - Atalanta A.jpg" alt="Atalanta"><figcaption>Atalanta, Queen of the Red Sands</figcaption></figure>
+      <figure><img loading="lazy" src="13 - Juno Guilliman A.jpeg" alt="Juno Guilliman"><figcaption>Juno Guilliman, Mistress of Ultramar</figcaption></figure>
+      <figure><img loading="lazy" src="14 - Morrigan B.png" alt="Morrigan"><figcaption>Morrigan, The Pale Death</figcaption></figure>
+      <figure><img loading="lazy" src="15 - Magnolia B.jpg" alt="Magnolia"><figcaption>Magnolia, The Cyclops of Prospero</figcaption></figure>
+      <figure><img loading="lazy" src="16 - Hathor Lupercal.jpeg" alt="Hathor Lupercal"><figcaption>Hathor Lupercal, The Warmaster</figcaption></figure>
+      <figure><img loading="lazy" src="17 - Aurelia B.jpg" alt="Aurelia"><figcaption>Aurelia, The Golden Urizen</figcaption></figure>
+      <figure><img loading="lazy" src="18 - Hestia.jpeg" alt="Hestia"><figcaption>Hestia, The Drake</figcaption></figure>
+      <figure><img loading="lazy" src="19 - Corvess Corax.jpeg" alt="Corvess Corax"><figcaption>Corvess Corax, The Shadowed Liberator</figcaption></figure>
+      <figure><img loading="lazy" src="20 - Alpharia Omega C.jpeg" alt="Alpharia Omega"><figcaption>Alpharia Omega, The Threefold Serpent</figcaption></figure>
     </div>
+
     <button id="pauseBtn">⏸ Pause</button>
   </div>
 
