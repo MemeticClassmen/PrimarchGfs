@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="="en">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -25,27 +25,25 @@
       height: 100%;
     }
 
-    .slide {
+    .carousel-images figure {
       width: 100vw;
-      flex-shrink: 0;
       height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      flex-direction: column;
-    }
-
-    .slide img {
-      max-height: 100%;
-      object-fit: contain;
-      box-sizing: border-box;
-    }
-
-    .slide-caption {
+      margin: 0;
       text-align: center;
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
+    }
+
+    .carousel-images img {
+      width: 100vw;
+      height: 90%;
+      object-fit: contain;
+      background: black;
+      cursor: pointer;
+    }
+
+    .carousel-images figcaption {
+      font-size: 1rem;
+      padding: 0.5rem;
+      background: rgba(0,0,0,0.6);
     }
 
     .arrow {
@@ -93,6 +91,28 @@
       padding: 1rem;
       background: #222;
     }
+
+    .caption a {
+      color: #7fd0ff;
+      text-decoration: none;
+    }
+
+    .caption a:hover {
+      text-decoration: underline;
+    }
+
+    #pauseBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      z-index: 2;
+    }
   </style>
 </head>
 <body>
@@ -101,33 +121,49 @@
     <button class="arrow left" onclick="prevSlide()">&#8592;</button>
     <button class="arrow right" onclick="nextSlide()">&#8594;</button>
     <div class="carousel-images" id="carouselImages">
-      <div class="slide"><img src="01 - Leona El'Jonson.jpeg" alt="Leona El' Jonson" /></div>
-      <div class="slide"><img src="03 - Fulgrimia A.jpg" alt="Fulgrimia" /></div>
-      <div class="slide"><img src="04 - Petra.jpeg" alt="Petra" /></div>
-      <div class="slide"><img src="05 - Alakhai Khan.jpeg" alt="Alakhai Khan" /></div>
-      <div class="slide"><img src="06 - Freya Russ.jpeg" alt="Freya Russ" /></div>
-      <div class="slide"><img src="07 - Regalia Dorn.jpeg" alt="Regalia Dorn" /></div>
-      <div class="slide"><img src="08 - Kassandra Curze.jpeg" alt="Kassandra Curze" /></div>
-      <div class="slide"><img src="09 - Sanguinia A.jpg" alt="Sanguinia" /></div>
-      <div class="slide"><img src="10 - Ferra Manus.jpeg" alt="Ferra Manus" /></div>
-      <div class="slide"><img src="12 - Atalanta A.jpg" alt="Atalanta" /></div>
-      <div class="slide"><img src="13 - Juno Guilliman A.jpeg" alt="Juno Guilliman" /></div>
-      <div class="slide"><img src="14 - Morrigan B.png" alt="Morrigan" /></div>
-      <div class="slide"><img src="15 - Magnolia B.jpg" alt="Magnolia" /></div>
-      <div class="slide"><img src="16 - Hathor Lupercal.jpeg" alt="Hathor Lupercal" /></div>
-      <div class="slide"><img src="17 - Aurelia B.jpg" alt="Aurelia" /></div>
-      <div class="slide"><img src="18 - Hestia.jpeg" alt="Hestia" /></div>
-      <div class="slide"><img src="19 - Corvess Corax.jpeg" alt="Corvess Corax" /></div>
-      <div class="slide"><img src="20 - Alpharia Omega C.jpeg" alt="Alpharia Omega" /></div>
+      <figure><img loading="lazy" src="01 - Leona El'Jonson.jpeg" alt="The Lion"><figcaption>Leona El'Jonson, The Lion</figcaption></figure>
+      <figure><img loading="lazy" src="03 - Fulgrimia A.jpg" alt="Phoenician"><figcaption>Fulgrimia, Phoenician</figcaption></figure>
+      <figure><img loading="lazy" src="04 - Petra.jpeg" alt="Hammer of Olympia"><figcaption>Petra, Hammer of Olympia</figcaption></figure>
+      <figure><img loading="lazy" src="05 - Alakhai Khan.jpeg" alt="The Warhawk"><figcaption>Alakhai Khan, The Warhawk</figcaption></figure>
+      <figure><img loading="lazy" src="06 - Freya Russ.jpeg" alt="The Great Wolf Queen"><figcaption>Freya Russ, The Great Wolf Queen</figcaption></figure>
+      <figure><img loading="lazy" src="07 - Regalia Dorn.jpeg" alt="The Vigilant"><figcaption>Regalia Dorn, The Vigilant</figcaption></figure>
+      <figure>
+        <a href="https://flowgpt.com/p/YEhuFYnJupSJBA7am29AM" target="_blank">
+          <img loading="lazy" src="08 - Kassandra Curze.jpeg" alt="The Night Haunter">
+        </a>
+        <figcaption>Kassandra Curze, The Night Haunter</figcaption>
+      </figure>
+      <figure>
+        <a href="https://flowgpt.com/p/primarch-dating-sim-sanguinia-the-crimson-angel-e2ea9c08" target="_blank">
+          <img loading="lazy" src="09 - Sanguinia A.jpg" alt="The Crimson Angel">
+        </a>
+        <figcaption>Sanguinia, The Crimson Angel</figcaption>
+      </figure>
+      <figure><img loading="lazy" src="10 - Ferra Manus.jpeg" alt="The Great Iron Mother"><figcaption>Ferra Manus, The Great Iron Mother</figcaption></figure>
+      <figure><img loading="lazy" src="12 - Atalanta A.jpg" alt="Queen of the Red Sands"><figcaption>Atalanta, Queen of the Red Sands</figcaption></figure>
+      <figure><img loading="lazy" src="13 - Juno Guilliman A.jpeg" alt="Mistress of Ultramar"><figcaption>Juno Guilliman, Mistress of Ultramar</figcaption></figure>
+      <figure><img loading="lazy" src="14 - Morrigan B.png" alt="The Pale Death"><figcaption>Morrigan, The Pale Death</figcaption></figure>
+      <figure><img loading="lazy" src="15 - Magnolia B.jpg" alt="The Cyclops of Prospero"><figcaption>Magnolia, The Cyclops of Prospero</figcaption></figure>
+      <figure><img loading="lazy" src="16 - Hathor Lupercal.jpeg" alt="The Warmaster"><figcaption>Hathor Lupercal, The Warmaster</figcaption></figure>
+      <figure><img loading="lazy" src="17 - Aurelia B.jpg" alt="The Golden Urizen"><figcaption>Aurelia, The Golden Urizen</figcaption></figure>
+      <figure><img loading="lazy" src="18 - Hestia.jpeg" alt="The Drake"><figcaption>Hestia, The Drake</figcaption></figure>
+      <figure><img loading="lazy" src="19 - Corvess Corax.jpeg" alt="The Shadowed Liberator"><figcaption>Corvess Corax, The Shadowed Liberator</figcaption></figure>
+      <figure><img loading="lazy" src="20 - Alpharia Omega C.jpeg" alt="The Threefold Serpent"><figcaption>Alpharia Omega, The Threefold Serpent</figcaption></figure>
     </div>
+    <button id="pauseBtn">⏸ Pause</button>
   </div>
 
-  <div class="slide-caption" id="slideText"></div>
   <div class="dots" id="dots"></div>
 
   <div class="caption">
-    <h2>Welcome to Primarch GFs Hub</h2>
-    <p>Use arrows or dots to browse all 18 Primarch bot covers! Art used for the bots and this website were done by Sfcompany1e and CNMBWJX. Check out their art on their Twitter/X and Patreon accounts.</p>
+    <h2>Primarch GFs Viewer</h2>
+    <p>
+      Swipe or use arrows to see all 18 Primarch covers.<br>
+      Art by 
+      <a href="https://twitter.com/Sfcompany1e" target="_blank">Sfcompany1e</a> 
+      and 
+      <a href="https://x.com/cnmbwjx3/with_replies" target="_blank">CNMBWJX</a>.
+    </p>
   </div>
 
   <script>
@@ -135,29 +171,7 @@
     const total = images.children.length;
     let currentIndex = 0;
     let autoplayInterval;
-
-    images.style.width = `${total * 100}vw`;
-
-    const captions = [
-      "Leona El' Jonson, The Lion",
-      "Fulgrimia, Phoenician",
-      "Petra, Hammer of Olympia",
-      "Alakhai Khan, The Warhawk",
-      "Freya Russ, The Great Wolf Queen",
-      "Regalia Dorn, The Vigilant",
-      "Kassandra Curze, The Night Haunter",
-      "Sanguinia, The Crimson Angel",
-      "Ferra Manus, The Great Iron Mother",
-      "Atalanta, Queen of the Red Sands",
-      "Juno Guilliman, Mistress of Ultramar",
-      "Morrigan, The Pale Death",
-      "Magnolia, The Cyclops of Prospero",
-      "Hathor Lupercal, The Warmaster",
-      "Aurelia, The Golden Urizen",
-      "Hestia, The Drake",
-      "Corvess Corax, The Shadowed Liberator",
-      "Alpharia Omega, The Threefold Serpent"
-    ];
+    let isPaused = false;
 
     const dotsContainer = document.getElementById("dots");
 
@@ -172,7 +186,6 @@
 
     function updateCarousel() {
       images.style.transform = `translateX(-${currentIndex * 100}vw)`;
-      document.getElementById("slideText").textContent = captions[currentIndex];
       for (let i = 0; i < dots.length; i++) {
         dots[i].classList.toggle("active", i === currentIndex);
       }
@@ -200,12 +213,23 @@
 
     function restartAutoplay() {
       clearInterval(autoplayInterval);
-      startAutoplay();
+      if (!isPaused) startAutoplay();
     }
+
+    const pauseBtn = document.getElementById("pauseBtn");
+    pauseBtn.addEventListener("click", () => {
+      if (isPaused) {
+        startAutoplay();
+        pauseBtn.textContent = "⏸ Pause";
+      } else {
+        clearInterval(autoplayInterval);
+        pauseBtn.textContent = "▶ Play";
+      }
+      isPaused = !isPaused;
+    });
 
     updateCarousel();
     startAutoplay();
   </script>
-
 </body>
 </html>
